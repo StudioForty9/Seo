@@ -1,0 +1,61 @@
+<script type="text/javascript">
+    $$('input[name="meta_title"]').each(function(elm){
+        elm.observe('change', function(){
+            if(Validation.validate(elm)){
+                updateMetaTitle(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
+            }
+        });
+    });
+
+    $$('input[name="meta_description"]').each(function(elm){
+        elm.observe('change', function(){
+            if(Validation.validate(elm)){
+                updateMetaDescription(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
+            }
+        });
+    });
+
+    $$('select[name="meta_robots"]').each(function(elm){
+        elm.observe('change', function(){
+            updateMetaRobots(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
+        });
+    });
+
+    $$('input[name="url_key"]').each(function(elm){
+        elm.observe('change', function(){
+            updateUrlKey(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
+        });
+    });
+
+    function updateMetaTitle(id, value, store)
+    {
+        new Ajax.Request('<?php echo Mage::helper('adminhtml')->getUrl('*/*/updateMetaTitle') ?>', {
+            method: 'post',
+            parameters: { id: id, title: value, store: store }
+        });
+    }
+
+    function updateMetaDescription(id, value, store)
+    {
+        new Ajax.Request('<?php echo Mage::helper('adminhtml')->getUrl('*/*/updateMetaDescription') ?>', {
+            method: 'post',
+            parameters: { id: id, description: value, store: store }
+        });
+    }
+
+    function updateMetaRobots(id, value, store)
+    {
+        new Ajax.Request('<?php echo Mage::helper('adminhtml')->getUrl('*/*/updateMetaRobots') ?>', {
+            method: 'post',
+            parameters: { id: id, robots: value, store: store }
+        });
+    }
+
+    function updateUrlKey(id, value, store)
+    {
+        new Ajax.Request('<?php echo Mage::helper('adminhtml')->getUrl('*/*/updateUrlKey') ?>', {
+            method: 'post',
+            parameters: { id: id, url: value, store: store }
+        });
+    }
+</script>

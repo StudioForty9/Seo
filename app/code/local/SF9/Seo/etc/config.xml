@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SF9_Seo>
+            <version>0.1.1</version>
+        </SF9_Seo>
+    </modules>
+    <admin>
+        <routers>
+            <seo>
+                <use>admin</use>
+                <args>
+                    <module>SF9_Seo</module>
+                    <frontName>seo</frontName>
+                </args>
+            </seo>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <catalog module="seo">
+                <children>
+                    <seo module="seo">
+                        <title>SEO</title>
+                        <sort_order>1000</sort_order>
+                        <children>
+                            <product>
+                                <title>Products</title>
+                                <sort_order>10</sort_order>
+                                <action>seo/adminhtml_product</action>
+                            </product>
+
+                            <category>
+                                <title>Categories</title>
+                                <sort_order>20</sort_order>
+                                <action>seo/adminhtml_category</action>
+                            </category>
+
+                            <page>
+                                <title>Pages</title>
+                                <sort_order>30</sort_order>
+                                <action>seo/adminhtml_page</action>
+                            </page>
+                        </children>
+                    </seo>
+                </children>
+            </catalog>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <SF9_Seo>
+                            <title>Seo Module</title>
+                            <sort_order>10</sort_order>
+                        </SF9_Seo>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <seo>
+                    <file>seo.xml</file>
+                </seo>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <models>
+            <seo>
+                <class>SF9_Seo_Model</class>
+            </seo>
+        </models>
+        <blocks>
+            <seo>
+                <class>SF9_Seo_Block</class>
+            </seo>
+
+            <adminhtml>
+                <rewrite>
+                    <cms_page_edit_tab_meta>SF9_Seo_Block_Cms_Adminhtml_Page_Edit_Tab_Meta</cms_page_edit_tab_meta>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <seo>
+                <class>SF9_Seo_Helper</class>
+            </seo>
+        </helpers>
+
+        <resources>
+            <seo_setup>
+                <setup>
+                    <module>SF9_Seo</module>
+                    <class>SF9_Seo_Model_Resource_Setup</class>
+                </setup>
+            </seo_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <sf9_seo>
+                        <type>model</type>
+                        <class>seo/observer</class>
+                        <method>coreBlockAbstractToHtmlBefore</method>
+                    </sf9_seo>
+                </observers>
+            </core_block_abstract_to_html_before>
+
+            <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <sf9_seo>
+                        <type>model</type>
+                        <class>seo/observer</class>
+                        <method>coreBlockAbstractPrepareLayoutBefore</method>
+                    </sf9_seo>
+                </observers>
+            </core_block_abstract_prepare_layout_before>
+        </events>
+    </frontend>
+</config>

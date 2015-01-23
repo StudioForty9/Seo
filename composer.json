@@ -1,0 +1,29 @@
+{
+    "description": "StudioForty9 SEO module",
+    "extra": {
+        "map": [
+            [
+                "app/etc/modules/SF9_Seo.xml",
+                "app/etc/modules/SF9_Seo.xml"
+            ],
+            [
+                "app/code/community/SF9/Seo/",
+                "app/code/community/SF9/Seo/"
+            ],
+            [
+                "app/design/adminhtml/default/default/layout/seo.xml",
+                "app/design/adminhtml/default/default/layout/seo.xml"
+            ],
+            [
+                "app/design/adminhtml/default/default/template/seo/",
+                "app/design/adminhtml/default/default/template/seo/"
+            ]
+        ]
+    },
+    "name": "sf9/seo",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "type": "magento-module",
+    "version": "0.1.1"
+}

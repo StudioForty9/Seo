@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<layout>
+    <add_js_for_inline_editing>
+        <reference name="js">
+            <block type="core/template" template="seo/inline-edit.phtml" />
+        </reference>
+    </add_js_for_inline_editing>
+
+    <seo_adminhtml_category_index>
+        <update handle="add_js_for_inline_editing"/>
+
+        <reference name="content">
+            <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                <action method="setUseConfirm"><params>0</params></action>
+            </block>
+        </reference>
+    </seo_adminhtml_category_index>
+
+    <seo_adminhtml_product_index>
+        <update handle="add_js_for_inline_editing"/>
+
+        <reference name="content">
+            <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                <action method="setUseConfirm"><params>0</params></action>
+            </block>
+        </reference>
+    </seo_adminhtml_product_index>
+
+    <seo_adminhtml_page_index>
+        <update handle="add_js_for_inline_editing"/>
+
+        <reference name="content">
+            <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                <action method="setUseConfirm"><params>0</params></action>
+            </block>
+        </reference>
+    </seo_adminhtml_page_index>
+</layout>
