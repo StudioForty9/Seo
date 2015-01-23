@@ -2,7 +2,8 @@
     $$('input[name="meta_title"]').each(function(elm){
         elm.observe('change', function(){
             if(Validation.validate(elm)){
-                updateMetaTitle(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
+				var store = $('store_switcher') ? $('store_switcher').value : 0;
+                updateMetaTitle(elm.readAttribute('data-id'), elm.value, store);
             }
         });
     });
@@ -10,20 +11,23 @@
     $$('input[name="meta_description"]').each(function(elm){
         elm.observe('change', function(){
             if(Validation.validate(elm)){
-                updateMetaDescription(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
+				var store = $('store_switcher') ? $('store_switcher').value : 0;
+                updateMetaDescription(elm.readAttribute('data-id'), elm.value, store);
             }
         });
     });
 
     $$('select[name="meta_robots"]').each(function(elm){
         elm.observe('change', function(){
-            updateMetaRobots(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
+			var store = $('store_switcher') ? $('store_switcher').value : 0;
+            updateMetaRobots(elm.readAttribute('data-id'), elm.value, store);
         });
     });
 
     $$('input[name="url_key"]').each(function(elm){
         elm.observe('change', function(){
-            updateUrlKey(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
+			var store = $('store_switcher') ? $('store_switcher').value : 0;
+            updateUrlKey(elm.readAttribute('data-id'), elm.value, store);
         });
     });
 
