@@ -2,32 +2,28 @@
     $$('input[name="meta_title"]').each(function(elm){
         elm.observe('change', function(){
             if(Validation.validate(elm)){
-				var store = $('store_switcher') ? $('store_switcher').value : 0;
-                updateMetaTitle(elm.readAttribute('data-id'), elm.value, store);
+                updateMetaTitle(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
             }
         });
     });
 
-    $$('input[name="meta_description"]').each(function(elm){
+    $$('textarea[name="meta_description"]').each(function(elm){
         elm.observe('change', function(){
             if(Validation.validate(elm)){
-				var store = $('store_switcher') ? $('store_switcher').value : 0;
-                updateMetaDescription(elm.readAttribute('data-id'), elm.value, store);
+                updateMetaDescription(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
             }
         });
     });
 
     $$('select[name="meta_robots"]').each(function(elm){
         elm.observe('change', function(){
-			var store = $('store_switcher') ? $('store_switcher').value : 0;
-            updateMetaRobots(elm.readAttribute('data-id'), elm.value, store);
+            updateMetaRobots(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
         });
     });
 
     $$('input[name="url_key"]').each(function(elm){
         elm.observe('change', function(){
-			var store = $('store_switcher') ? $('store_switcher').value : 0;
-            updateUrlKey(elm.readAttribute('data-id'), elm.value, store);
+            updateUrlKey(elm.readAttribute('data-id'), elm.value, $('store_switcher').value)
         });
     });
 
@@ -62,4 +58,21 @@
             parameters: { id: id, url: value, store: store }
         });
     }
+
+    //Character Count
+    Event.observe(window, 'load', function() {
+        $$('#seoGrid_table tbody input[type="text"], #seoGrid_table tbody textarea').each( function(i) {
+            var my_id = $(i).readAttribute('name') + '_' + $(i).readAttribute('data-id');
+            var max = $(i).readAttribute('name') == 'meta_title' ? 75 : 160;
+            $(i).insert({
+                'after': "<div id='"+my_id+"_counter'>Char count: <span id='"+my_id+"_counter_num'>"+$(i).getValue()
+                    .length+"</span> / " + max + "</div>"
+            });
+            $(my_id+"_counter").hide();
+            $(i).observe('keyup', function(e) {
+                $(my_id+"_counter_num").update($(this).getValue().length);
+                $(my_id+"_counter").show();
+            });
+        });
+    });
 </script>

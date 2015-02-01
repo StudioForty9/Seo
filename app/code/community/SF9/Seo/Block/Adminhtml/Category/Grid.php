@@ -67,20 +67,22 @@ class SF9_Seo_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
                 'index' => 'meta_robots',
                 'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline_select',
                 'source' => 'seo/source_robots',
-                'tab_index' => 3
+                'tab_index' => 3,
             )
         );
 
-        $this->addColumn('url_key',
-            array(
-                'header' => Mage::helper('seo')->__('URL Key'),
-                'align' => 'left',
-                'index' => 'url_key',
-                'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline',
-                'inline_css' => '',
-                'tab_index' => 4
-            )
-        );
+        if(Mage::helper('seo')->canShowUrlKey()) {
+            $this->addColumn('url_key',
+                array(
+                    'header' => Mage::helper('seo')->__('URL Key'),
+                    'align' => 'left',
+                    'index' => 'url_key',
+                    'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline',
+                    'inline_css' => '',
+                    'tab_index' => 4
+                )
+            );
+        }
 
 //        $this->addColumn('action',
 //            array(

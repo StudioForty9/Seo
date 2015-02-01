@@ -62,16 +62,18 @@ class SF9_Seo_Block_Adminhtml_Page_Grid extends Mage_Adminhtml_Block_Widget_Grid
             )
         );
 
-        $this->addColumn('url_key',
-            array(
-                'header' => Mage::helper('seo')->__('URL Key'),
-                'align' => 'left',
-                'index' => 'identifier',
-                'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline',
-                'inline_css' => '',
-                'tab_index' => 4
-            )
-        );
+        if(Mage::helper('seo')->canShowUrlKey()) {
+            $this->addColumn('url_key',
+                array(
+                    'header' => Mage::helper('seo')->__('URL Key'),
+                    'align' => 'left',
+                    'index' => 'identifier',
+                    'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline',
+                    'inline_css' => '',
+                    'tab_index' => 4
+                )
+            );
+        }
 
 //        $this->addColumn('action',
 //            array(

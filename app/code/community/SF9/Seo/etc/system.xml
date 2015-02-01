@@ -1,0 +1,40 @@
+<config>
+    <tabs>
+        <sf9 translate="label" module="seo">
+            <label>StudioForty9</label>
+            <sort_order>199</sort_order>
+        </sf9>
+    </tabs>
+
+    <sections>
+        <seo translate="label" module="seo">
+            <label>SEO</label>
+            <tab>sf9</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general>
+                    <label>General</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_url_key>
+                            <label>Show URL Key in Admin Grid?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_url_key>
+                    </fields>
+                </general>
+            </groups>
+        </seo>
+    </sections>
+</config>

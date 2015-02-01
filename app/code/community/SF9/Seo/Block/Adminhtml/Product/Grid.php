@@ -66,7 +66,8 @@ class SF9_Seo_Block_Adminhtml_Product_Grid extends Mage_Adminhtml_Block_Widget_G
                 'index' => 'meta_title',
                 'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline',
                 'inline_css' => 'validate-length maximum-length-75',
-                'tab_index' => 1
+                'tab_index' => 1,
+                'width'=> '520px',
             )
         );
 
@@ -75,7 +76,7 @@ class SF9_Seo_Block_Adminhtml_Product_Grid extends Mage_Adminhtml_Block_Widget_G
                 'header' => Mage::helper('seo')->__('Meta Description'),
                 'align' => 'left',
                 'index' => 'meta_description',
-                'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline',
+                'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline_textarea',
                 'inline_css' => 'validate-length maximum-length-160',
                 'tab_index' => 2
             )
@@ -88,20 +89,23 @@ class SF9_Seo_Block_Adminhtml_Product_Grid extends Mage_Adminhtml_Block_Widget_G
                 'index' => 'meta_robots',
                 'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline_select',
                 'source' => 'seo/source_robots',
-                'tab_index' => 3
+                'tab_index' => 3,
+                'width'=> '50px',
             )
         );
 
-        $this->addColumn('url_key',
-            array(
-                'header' => Mage::helper('seo')->__('URL Key'),
-                'align' => 'left',
-                'index' => 'url_key',
-                'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline',
-                'inline_css' => '',
-                'tab_index' => 4
-            )
-        );
+        if(Mage::helper('seo')->canShowUrlKey()) {
+            $this->addColumn('url_key',
+                array(
+                    'header' => Mage::helper('seo')->__('URL Key'),
+                    'align' => 'left',
+                    'index' => 'url_key',
+                    'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline',
+                    'inline_css' => '',
+                    'tab_index' => 4
+                )
+            );
+        }
 
 //        $this->addColumn('action',
 //            array(

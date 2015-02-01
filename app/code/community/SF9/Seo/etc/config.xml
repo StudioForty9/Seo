@@ -2,7 +2,7 @@
 <config>
     <modules>
         <SF9_Seo>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </SF9_Seo>
     </modules>
     <admin>
@@ -57,10 +57,23 @@
                             <title>Seo Module</title>
                             <sort_order>10</sort_order>
                         </SF9_Seo>
+
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <seo>
+                                            <title>SEO Configuration</title>
+                                        </seo>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
                     </children>
                 </admin>
             </resources>
         </acl>
+
         <layout>
             <updates>
                 <seo>
@@ -125,4 +138,12 @@
             </core_block_abstract_prepare_layout_before>
         </events>
     </frontend>
+
+    <default>
+        <seo>
+            <general>
+                <show_url_key>0</show_url_key>
+            </general>
+        </seo>
+    </default>
 </config>
