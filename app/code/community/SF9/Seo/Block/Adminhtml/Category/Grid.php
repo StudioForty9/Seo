@@ -54,7 +54,7 @@ class SF9_Seo_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Widget_
                 'header' => Mage::helper('seo')->__('Meta Description'),
                 'align' => 'left',
                 'index' => 'meta_description',
-                'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline',
+                'renderer' => 'seo/adminhtml_widget_grid_column_renderer_inline_textarea',
                 'inline_css' => 'validate-length maximum-length-160',
                 'tab_index' => 2
             )
